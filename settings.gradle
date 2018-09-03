@@ -1,0 +1,2 @@
+rootProject.name = "Court Micro Services"
+include "court-service"
