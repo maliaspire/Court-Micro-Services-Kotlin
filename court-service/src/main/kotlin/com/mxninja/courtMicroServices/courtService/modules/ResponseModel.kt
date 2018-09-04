@@ -16,4 +16,6 @@ class ResponseModel<DataType>(val code: Int, val message: String) {
 
     constructor(data: DataType) : this(ApiStatus.OK, data)
 
+    constructor() : this(ApiStatus.OK)
+
 }

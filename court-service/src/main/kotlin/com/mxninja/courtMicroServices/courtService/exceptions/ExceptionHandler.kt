@@ -34,6 +34,7 @@ class ExceptionHandler : AbstractHandlerExceptionResolver() {
         response.writer.write(objectMapper.writeValueAsString(respModel))
         response.writer.flush()
         response.writer.close()
+        ex.printStackTrace()
         return ModelAndView()
     }
 }

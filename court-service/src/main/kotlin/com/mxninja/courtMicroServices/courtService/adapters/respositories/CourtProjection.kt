@@ -1,9 +1,10 @@
 package com.mxninja.courtMicroServices.courtService.adapters.respositories
 
-import lombok.AllArgsConstructor
-import lombok.EqualsAndHashCode
-import lombok.NoArgsConstructor
+import org.bson.types.ObjectId
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.DBRef
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalTime
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
@@ -12,16 +13,17 @@ import javax.persistence.Id
  * @author Mohammad Ali
  */
 
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
+
 @Document(collection = "Courts")
-class CourtProjection {
-
-    @field:Id
-    @field:GeneratedValue
-    lateinit var id: String
-
-    lateinit var name: String
-
-}
+data class CourtProjection(
+        @Id
+        @GeneratedValue
+        var id: String?,
+        var nameAr: String,
+        var nameEn: String,
+        @Indexed()
+        var courtTypeId: ObjectId,
+        var size: Int,
+        var openTime: LocalTime,
+        var closeTime: LocalTime
+)
